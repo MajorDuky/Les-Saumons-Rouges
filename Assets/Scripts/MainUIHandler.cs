@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainUIHandler : MonoBehaviour
 {
@@ -11,22 +12,15 @@ public class MainUIHandler : MonoBehaviour
     [SerializeField] private Image rightCharacter;
     [SerializeField] private Image centerCharacter;
     [SerializeField] private Image backgroundImage;
+    [SerializeField] private Animator textAnimator;
+    [SerializeField] private TMP_Text dialogueBox;
     private int? currentSpriteLeft = null;
     private int? currentSpriteRight = null;
     private int? currentSpriteCenter = null;
     private int? currentSpriteBackground = null;
     // Start is called before the first frame update
-    void Start()
-    {
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void HandleActiveSprites(string spritePosition)
+    public void HandleActiveSprites(string spritePosition)
     {
         if (spritePosition == "Left" && centerCharacter.gameObject.activeInHierarchy || 
             spritePosition == "Right" && centerCharacter.gameObject.activeInHierarchy)
@@ -43,7 +37,7 @@ public class MainUIHandler : MonoBehaviour
         }
     }
 
-    private void ChangeCharacterSprite(int spriteId, string spritePosition)
+    public void ChangeCharacterSprite(int spriteId, string spritePosition)
     {
         if (spritePosition == "Left")
         {
@@ -62,10 +56,16 @@ public class MainUIHandler : MonoBehaviour
         }
     }
 
-    private void ChangeBackgroundSprite(int backgroundId)
+    public void ChangeBackgroundSprite(int backgroundId)
     {
         currentSpriteBackground = backgroundId;
         backgroundImage.sprite = backgrounds[backgroundId];
     }
-    
+
+    public IEnumerator LaunchNewTextCoroutine(string textToDisplay)
+    {
+        textAnimator.SetTrigger("fadeOut");
+        yield return new WaitForSeconds(0.9f);
+        dialogueBox.text = textToDisplay;
+    }
 }

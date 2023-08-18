@@ -1,0 +1,14 @@
+{
+    "dialogueId": 0,
+    "dialogueKarma": 0,
+    "dialogueDetails": [
+        {
+            "characterDialogue": "Bonjour le monde, je suis un dialogue de merde dans un jeu de merde, mais faut pas le dire, personne m'a vu... Enfin sauf les gens dans le chat... Donc pas grand monde... Mais on s'en fout puisqu'on s'amuse non ?",
+            "characterSpriteId": 0,
+            "characterPosition": "Center",
+            "backgroundSpriteId": 0,
+            "musicId": 0,
+            "isQuestion": false
+        }
+    ]
+}
