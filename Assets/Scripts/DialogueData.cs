@@ -11,6 +11,7 @@ public struct DialogueDetails
     public int backgroundSpriteId;
     public int musicId;
     public bool isQuestion;
+    public int questionId;
 }
 [Serializable]
 public class DialogueData

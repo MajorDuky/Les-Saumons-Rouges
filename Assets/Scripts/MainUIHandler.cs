@@ -14,6 +14,8 @@ public class MainUIHandler : MonoBehaviour
     [SerializeField] private Image backgroundImage;
     [SerializeField] private Animator textAnimator;
     [SerializeField] private TMP_Text dialogueBox;
+    [SerializeField] private Button choicePrefab;
+    [SerializeField] private GameObject choiceBox;
     private int? currentSpriteLeft = null;
     private int? currentSpriteRight = null;
     private int? currentSpriteCenter = null;
@@ -67,5 +69,29 @@ public class MainUIHandler : MonoBehaviour
         textAnimator.SetTrigger("fadeOut");
         yield return new WaitForSeconds(0.9f);
         dialogueBox.text = textToDisplay;
+    }
+
+    public void GenerateDialogueChoices(List<Answers> answers)
+    {
+        foreach (var answer in answers)
+        {
+            Button clone = Instantiate(choicePrefab);
+            clone.transform.SetParent(choiceBox.transform);
+            ChoiceComponent choiceComponent = clone.GetComponent<ChoiceComponent>();
+            choiceComponent.choice.text = answer.answerText;
+            choiceComponent.AnswerKarma = answer.answerKarma;
+        }
+    }
+
+    public void HandleActiveChoice(bool isQuestion)
+    {
+        if (isQuestion)
+        {
+            choiceBox.SetActive(true);
+        }
+        else
+        {
+            choiceBox.SetActive(false);
+        }
     }
 }

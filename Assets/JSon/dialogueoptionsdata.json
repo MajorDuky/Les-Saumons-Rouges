@@ -1,0 +1,16 @@
+{
+    "questionId": 0,
+    "answers":
+    [
+        {
+            "answerID": 0,
+            "answerText": "Bonjour je suis une reponse random",
+            "answerKarma": 0
+        },
+        {
+            "answerID": 1,
+            "answerText": "Nan on dit bonsoir connard",
+            "answerKarma": -10
+        }
+    ]
+}
