@@ -16,6 +16,7 @@ public class MainUIHandler : MonoBehaviour
     [SerializeField] private TMP_Text dialogueBox;
     [SerializeField] private Button choicePrefab;
     [SerializeField] private GameObject choiceBox;
+    [SerializeField] private DialogueManager dialogueManager;
     private int? currentSpriteLeft = null;
     private int? currentSpriteRight = null;
     private int? currentSpriteCenter = null;
@@ -41,34 +42,42 @@ public class MainUIHandler : MonoBehaviour
 
     public void ChangeCharacterSprite(int spriteId, string spritePosition)
     {
-        if (spritePosition == "Left")
+        if (spritePosition == "Left" && currentSpriteLeft != spriteId)
         {
             currentSpriteLeft = spriteId;
             leftCharacter.sprite = characters[spriteId];
         }
-        else if (spritePosition == "Right")
+        else if (spritePosition == "Right" && currentSpriteRight != spriteId)
         {
             currentSpriteRight = spriteId;
             rightCharacter.sprite = characters[spriteId];
         }
-        else
+        else if (spritePosition == "Center" && currentSpriteCenter != spriteId)
         {
             currentSpriteCenter = spriteId;
             centerCharacter.sprite = characters[spriteId];
+        }
+        else
+        {
+            return;
         }
     }
 
     public void ChangeBackgroundSprite(int backgroundId)
     {
-        currentSpriteBackground = backgroundId;
-        backgroundImage.sprite = backgrounds[backgroundId];
+        if (currentSpriteBackground != backgroundId)
+        {
+            currentSpriteBackground = backgroundId;
+            backgroundImage.sprite = backgrounds[backgroundId];
+        }
     }
 
     public IEnumerator LaunchNewTextCoroutine(string textToDisplay)
     {
         textAnimator.SetTrigger("fadeOut");
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitUntil(() => textAnimator.GetBool("coucou"));
         dialogueBox.text = textToDisplay;
+        textAnimator.SetBool("coucou", false);
     }
 
     public void GenerateDialogueChoices(List<Answers> answers)
@@ -93,5 +102,10 @@ public class MainUIHandler : MonoBehaviour
         {
             choiceBox.SetActive(false);
         }
+    }
+
+    public void OnClickSaveButton()
+    {
+        GameManager.Instance.Save(dialogueManager.CurrentDialogue, dialogueManager.PlayerKarma);
     }
 }

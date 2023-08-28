@@ -13,10 +13,15 @@ public struct DialogueDetails
     public bool isQuestion;
     public int questionId;
 }
+
+[Serializable]
+public struct DialogueStructure
+{
+    public List<DialogueDetails> dialogueStructure;
+}
+
 [Serializable]
 public class DialogueData
 {
-    public int dialogueId;
-    public int dialogueKarma;
-    public List<DialogueDetails> dialogueDetails;
+    public List<DialogueStructure> dialogue;
 }

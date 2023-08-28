@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 
 [Serializable]
@@ -9,9 +8,15 @@ public struct Answers
     public string answerText;
     public int answerKarma;
 }
+
+[Serializable]
+public struct AnswersData
+{
+    public List<Answers> answers;
+}
+
 [Serializable]
 public class DialogueOptionsData
 {
-    public int questionId;
-    public List<Answers> answers;
+    public List<AnswersData> dialogueOptionsData;
 }

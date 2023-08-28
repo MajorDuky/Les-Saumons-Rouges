@@ -1,16 +1,16 @@
 {
-    "questionId": 0,
-    "answers":
-    [
+    "dialogueOptionsData": [
         {
-            "answerID": 0,
-            "answerText": "Bonjour je suis une reponse random",
-            "answerKarma": 0
-        },
-        {
-            "answerID": 1,
-            "answerText": "Nan on dit bonsoir connard",
-            "answerKarma": -10
+            "answers": [
+                {
+                    "answerText": "Bonjour je suis une reponse random",
+                    "answerKarma": 0
+                },
+                {
+                    "answerText": "Nan on dit bonsoir connard",
+                    "answerKarma": -10
+                }
+            ]
         }
     ]
 }

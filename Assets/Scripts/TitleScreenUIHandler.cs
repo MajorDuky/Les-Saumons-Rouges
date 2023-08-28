@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleScreenUIHandler : MonoBehaviour
 {
@@ -35,6 +36,18 @@ public class TitleScreenUIHandler : MonoBehaviour
     public void OnValueChangedFXVolume()
     {
         gameManager.FXVolume = SliderFXVolume.value;
+    }
+
+    public void OnClickNGButton()
+    {
+        SceneManager.LoadScene(1);
+        GameManager.Instance.DialogueId = -1;
+    }
+
+    public void OnClickResumeButton()
+    {
+        GameManager.Instance.Load();
+        SceneManager.LoadScene(1);
     }
 
     public void Exit()

@@ -422,7 +422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &434227687
 RectTransform:
   m_ObjectHideFlags: 0
@@ -497,7 +497,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &483086969
 RectTransform:
   m_ObjectHideFlags: 0
@@ -587,6 +587,8 @@ MonoBehaviour:
   dialogueJsonPath: 
   dialogueOptionsJsonPath: 
   MainUIHandler: {fileID: 1494203778}
+  dialogueData:
+    dialogue: []
 --- !u!4 &728724636
 Transform:
   m_ObjectHideFlags: 0
@@ -903,7 +905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1030086232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -921,7 +923,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -999,6 +1001,7 @@ GameObject:
   - component: {fileID: 1143334987}
   - component: {fileID: 1143334986}
   - component: {fileID: 1143334988}
+  - component: {fileID: 1143334989}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -1143,6 +1146,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1143334989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143334984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d550b1f0d932f4393722d241384a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textAnimator: {fileID: 1143334988}
 --- !u!1 &1266001091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,7 +1467,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1472487551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1494203778}
+        m_TargetAssemblyTypeName: MainUIHandler, Assembly-CSharp
+        m_MethodName: OnClickSaveButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1472487551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1610,7 +1638,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characters:
   - {fileID: 21300000, guid: 61b43a9d922cf3c4d9ffe43005809f7f, type: 3}
-  backgrounds: []
+  backgrounds:
+  - {fileID: 21300000, guid: 09964b80e3e0ed043b08ab054a09d34b, type: 3}
   leftCharacter: {fileID: 434227688}
   rightCharacter: {fileID: 483086970}
   centerCharacter: {fileID: 2001175410}
@@ -1619,6 +1648,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 1143334986}
   choicePrefab: {fileID: 5522471981471120188, guid: 1f565f5dea850984a8e6b7ea095f55a3, type: 3}
   choiceBox: {fileID: 1030086231}
+  dialogueManager: {fileID: 728724635}
 --- !u!1 &1752288950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1949,7 +1979,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2001175409
 RectTransform:
   m_ObjectHideFlags: 0
